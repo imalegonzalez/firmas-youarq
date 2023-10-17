@@ -49,7 +49,7 @@ function Firma(props) {
   
   return (
     <div className=''>
-		<form className=' h-fit grid md:flex-row md:gap-4'>
+		<form className=' gap-4 h-fit grid md:flex-row md:gap-4'>
 			<div className="">
 				<label for="default-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
 				<input className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -70,7 +70,7 @@ function Firma(props) {
 				placeholder="Teléfono"
 				/>
 			</div>
-			<div class="">
+			<div class="md:col-span-2">
 				<label for="default-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Cargo</label>
 				<input className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 				type="text" 
