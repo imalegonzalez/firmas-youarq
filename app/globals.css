@@ -25,3 +25,85 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.wrapper{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  
+}
+td a {
+  display: inline-block;
+}
+
+
+.copiado::before{
+  content: "Copiado";
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 99;
+}
+
+
+.codeBlock{
+  position: relative;
+  overflow: hidden;
+  max-width: 700px;
+  padding: 1em;
+  background-color: aliceblue;
+  color: grey;
+  border-radius: 10px;
+  
+
+}
+
+#copiarBttn{
+  all:unset;
+  padding: 7px;
+  background-color: rgb(15, 16, 68);
+  height: fit-content;
+  border-radius: 5px;
+  color: white;
+  position: absolute;
+  right: 0;
+  margin-top: -10px;
+}
+
+#copiarBttn:hover{
+  cursor:pointer;
+}
+
+code{
+  max-height: 250px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+pre{
+  text-wrap: wrap;
+  white-space: normal;
+  font-size: 0.5em;
+  display: flex;
+  position: relative;
+  margin:0;
+  
+}
+
+.copiado {
+  position: relative;
+  overflow: hidden;
+  max-width: 700px;
+  padding: 1em;
+  background-color:;
+  color: grey;
+  border-radius: 10px;
+}
