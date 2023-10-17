@@ -17,6 +17,8 @@
 }
 
 body {
+  margin:0px;
+  padding:0px;
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
@@ -26,12 +28,7 @@ body {
     rgb(var(--background-start-rgb));
 }
 
-.wrapper{
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  
-}
+
 td a {
   display: inline-block;
 }
