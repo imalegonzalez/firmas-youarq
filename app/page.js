@@ -1,11 +1,6 @@
-
-import { SessionProvider, getSession } from 'next-auth/react';
 import Image from 'next/image'
 import Firma from './components/Firma'
 import PreviewFirma from './components/PreviewFirma'
-import UserSession from './components/SesionUsuario'
-
-
 
 
 export default function Home() {

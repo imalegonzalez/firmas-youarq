@@ -1,8 +1,3 @@
-
-
-import Providers from './Providers'
-import SesionUsuario from './components/SesionUsuario'
-
 import './globals.css'
 import { Inter } from 'next/font/google'
 
