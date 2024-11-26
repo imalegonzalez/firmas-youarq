@@ -9,8 +9,6 @@ function PreviewFirma(props) {
   const firmaDecode = decode(props.firmaState, {level: 'xml'})
 
   console.log('devode', firmaDecode)
-
-
   
   return (
     <>
