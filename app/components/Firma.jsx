@@ -84,7 +84,6 @@ const templateFirma = (nombre, cargo, telefono, ubicacion) => {
 function Firma(props) {
 
 	const [datos, setDatos] = useState({ nombre: "Alejo Gonzalez", cargo: "Gerente de Marketing", telefono: "1123879878", ubicacion: "CABA" })
-	const [copiado, setCopiado] = React.useState(false);
 
 
 
@@ -93,31 +92,28 @@ function Firma(props) {
 		setDatos(prev => ({ ...prev, [name]: value }));
 	}
 
-	function handleSubmit(event) {
-		event.preventDefault();
-		// Aquí puedes hacer algo adicional si es necesario
-	}
-
-	function copiarAlPortapapeles() {
-		// Obtenemos el contenido del elemento <code>
-		const codigo = document.querySelector("#containerId code").textContent;
-
-		// Usamos la API navigator.clipboard para copiar el texto
-		navigator.clipboard.writeText(codigo).then(() => {
-			console.log("Texto copiado al portapapeles!");
-
-			// Activa el efecto
-			setCopiado(true);
-
-			// Desactiva el efecto después de 1.5 segundos
-			setTimeout(() => {
-				setCopiado(false);
-			}, 1500);
-		}).catch(err => {
-			console.error("Error al copiar el texto: ", err);
-		});
-
-
+	function descargarHTML() {
+		// Generamos el código HTML con los datos actuales
+		const codigoHTML = templateFirma(datos.nombre, datos.cargo, datos.telefono, datos.ubicacion);
+		
+		// Creamos un Blob con el contenido HTML
+		const blob = new Blob([codigoHTML], { type: 'text/html' });
+		
+		// Creamos una URL temporal para el blob
+		const url = URL.createObjectURL(blob);
+		
+		// Creamos un elemento <a> temporal
+		const a = document.createElement('a');
+		a.href = url;
+		a.download = 'firma.html'; // Nombre del archivo a descargar
+		
+		// Simulamos el clic
+		document.body.appendChild(a);
+		a.click();
+		
+		// Limpiamos
+		document.body.removeChild(a);
+		URL.revokeObjectURL(url);
 	}
 
 
@@ -126,7 +122,12 @@ function Firma(props) {
 		<div className=''>
 			<FirmaForm datos={datos} handleInputChange={handleInputChange} />
 			<FirmaView datos={datos} templateFirma={templateFirma} />
-			<FirmaCode datos={datos} copiado={copiado} copiarAlPortapapeles={copiarAlPortapapeles} templateFirma={templateFirma} />
+			<button 
+				onClick={descargarHTML}
+				className="bg-blue-500 hover:bg-blue-700 w-full text-white font-bold py-2 px-4 rounded"
+			>
+				Descargar Firma
+			</button>
 		</div>
 	)
 }

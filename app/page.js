@@ -7,8 +7,8 @@ export default function Home() {
   
   return (
     <>
-    <main className='flex justify-center align-middle h-fit'>
-      <section className="px-5 flex flex-col w-screen max-w-[490px] ">
+    <main className='flex justify-center align-middle h-full'>
+      <section className="px-5 flex flex-col w-screen max-w-[490px] justify-center ">
         <h1 className='py-10 text-2xl font-bold text-slate-600'>Generá tu firma personalizada</h1>
         <div className="">
           <Firma nombre="Alejo" rol="Gerente" tel="1123879878"/>
