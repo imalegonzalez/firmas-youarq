@@ -96,7 +96,7 @@ function Firma(props) {
 		nombre: "Alejo Gonzalez", 
 		cargo: "Gerente de Marketing", 
 		telefono: "1123879878", 
-		ubicacion: "CABA"
+		ubicacion: ""
 	});
 
 	function handleInputChange(event) {
