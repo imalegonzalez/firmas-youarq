@@ -12,7 +12,7 @@ const templateFirma = (nombre, cargo, telefono, ubicacion) => {
 	} else if (ubicacion === "CBA") {
 		direccion = "Boulevard San Juan 651";
 	} else {
-		direccion = "Dirección no disponible";
+		direccion = undefined;
 	}
 
 	return `<div class="youarq-firma"> 
@@ -54,9 +54,9 @@ const templateFirma = (nombre, cargo, telefono, ubicacion) => {
 												<tr style="/* padding-top: 10px; */"> 
 													<td style="font-size:12px;color:#697582;line-height:1;padding-top: 10px;"><span style="color:#dc6441; font-weight: 600;"> YouArq</span> | <span style="color:#dc6441;font-weight: 600;"></span> <a href="https://youarq.com" style="color:#697582; text-decoration:none;">www.youarq.com</a></td> 
 												</tr> 
-												<tr> 
+												${direccion ? `<tr> 
 													<td style="font-size:12px; color:#697582; line-height:1;"><span style="color:#dc6441;font-weight: 600;"></span> ${direccion} </td> 
-												</tr> 
+												</tr>` : ''}
 												<tr> 
 													<td style=style="padding-top: 4px; text-align:left;" width="100%"> 
 														<a href="https://www.facebook.com/youarq/" style="padding-right: 5px;"><img alt="facebook" src="https://youarq.s3.sa-east-1.amazonaws.com/facebook+(1).png" style="border-radius: 50%;padding: 2px;background-color: #dc6441;" height="24" width="24"></a> 
@@ -83,18 +83,31 @@ const templateFirma = (nombre, cargo, telefono, ubicacion) => {
 
 function Firma(props) {
 
-	const [datos, setDatos] = useState({ nombre: "Alejo Gonzalez", cargo: "Gerente de Marketing", telefono: "1123879878", ubicacion: "CABA" })
+	// Estado para los inputs (vacío inicialmente)
+	const [datos, setDatos] = useState({ 
+		nombre: "", 
+		cargo: "", 
+		telefono: "", 
+		ubicacion: "" 
+	});
 
-
+	// Estado para la visualización (con datos de prueba)
+	const [preview, setPreview] = useState({
+		nombre: "Alejo Gonzalez", 
+		cargo: "Gerente de Marketing", 
+		telefono: "1123879878", 
+		ubicacion: "CABA"
+	});
 
 	function handleInputChange(event) {
 		const { name, value } = event.target;
 		setDatos(prev => ({ ...prev, [name]: value }));
+		setPreview(prev => ({ ...prev, [name]: value }));
 	}
 
 	function descargarHTML() {
 		// Generamos el código HTML con los datos actuales
-		const codigoHTML = templateFirma(datos.nombre, datos.cargo, datos.telefono, datos.ubicacion);
+		const codigoHTML = templateFirma(preview.nombre, preview.cargo, preview.telefono, preview.ubicacion);
 		
 		// Creamos un Blob con el contenido HTML
 		const blob = new Blob([codigoHTML], { type: 'text/html' });
@@ -121,7 +134,7 @@ function Firma(props) {
 	return (
 		<div className=''>
 			<FirmaForm datos={datos} handleInputChange={handleInputChange} />
-			<FirmaView datos={datos} templateFirma={templateFirma} />
+			<FirmaView datos={preview} templateFirma={templateFirma} />
 			<button 
 				onClick={descargarHTML}
 				className="bg-blue-500 hover:bg-blue-700 w-full text-white font-bold py-2 px-4 rounded"
