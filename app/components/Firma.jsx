@@ -27,7 +27,7 @@ const templateFirma = (nombre, cargo, telefono, ubicacion) => {
 										<table> 
 											<tbody> 
 												<tr> 
-													<td align="center"><a href="https://youarq.com"><img src="https://i.ibb.co/T0h2jHp/logo-ig-MIN.png" alt="logo" width="100" height:="" 25px;=""></a></td> 
+													<td align="center"><a href="https://youarq.com"><img src="https://youarq.s3.sa-east-1.amazonaws.com/logo-ig-MIN.png" alt="logo" width="100" height:="" 25px;=""></a></td> 
 												</tr> 
 											</tbody> 
 										</table> 
